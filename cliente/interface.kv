@@ -1,0 +1,194 @@
+#:kivy 2.3.1
+
+<MyWidget>:
+    orientation: "vertical"
+    padding: "20dp"
+    spacing: "15dp"
+
+    MDLabel:
+        text: "SUPERVISÓRIO"
+        halign: "center"
+        bold: True
+        size_hint_y: None
+        height: "40dp"
+
+    MDBoxLayout:
+        size_hint_y: None
+        height: "60dp"
+        spacing: "10dp"
+
+        MDLabel:
+            text: "IP SERVIDOR:"
+            size_hint_x: None
+            width: "130dp"
+
+        MDTextField:
+            id: ip_servidor
+            mode: "rectangle"
+
+        MDLabel:
+            text: "PORTA:"
+            size_hint_x: None
+            width: "80dp"
+
+        MDTextField:
+            id: porta_servidor
+            mode: "rectangle"
+            size_hint_x: None
+            width: "100dp"
+
+        MDRaisedButton:
+            text: "CONECTAR"
+            size_hint_x: None
+            width: "120dp"
+            on_press: root.conectar()
+
+    MDBoxLayout:
+        size_hint_y: None
+        height: "60dp"
+        spacing: "10dp"
+
+        MDLabel:
+            text: "ENDEREÇO:"
+            size_hint_x: None
+            width: "130dp"
+
+        MDTextField:
+            id: endereco_modbus
+            mode: "rectangle"
+
+        MDLabel:
+            text: "BIT:"
+            size_hint_x: None
+            width: "50dp"
+
+        MDTextField:
+            id: posicao_bit
+            mode: "rectangle"
+            size_hint_x: None
+            width: "120dp"
+
+    MDBoxLayout:
+        size_hint_y: None
+        height: "50dp"
+        spacing: "20dp"
+
+        # TIPO
+        MDBoxLayout:
+            MDCheckbox:
+                id: chk_float
+                group: "tipo"
+                active: True
+
+            MDLabel:
+                text: "FLOAT"
+
+        MDBoxLayout:
+            MDCheckbox:
+                id: chk_bit
+                group: "tipo"
+
+            MDLabel:
+                text: "BIT"
+
+        # FONTE
+        MDBoxLayout:
+            MDCheckbox:
+                id: chk_coil
+                group: "tipo"
+
+            MDLabel:
+                text: "COIL"
+
+        MDBoxLayout:
+            MDCheckbox:
+                id: chk_holding
+                group: "tipo"
+                active: True
+
+            MDLabel:
+                text: "HOLDING"
+
+    MDBoxLayout:
+        size_hint_y: None
+        height: "60dp"
+        spacing: "10dp"
+
+        MDLabel:
+            text: "ESCRITA:"
+            size_hint_x: None
+            width: "130dp"
+
+        MDTextField:
+            id: valor_escrita
+            mode: "rectangle"
+
+        MDRaisedButton:
+            text: "ESCREVER"
+            size_hint_x: None
+            width: "120dp"
+            on_press: root.escrever()
+
+    MDBoxLayout:
+        size_hint_y: None
+        height: "50dp"
+        spacing: "20dp"
+
+        MDLabel:
+            text: "LEITURA:"
+            size_hint_x: None
+            width: "130dp"
+
+        MDBoxLayout:
+            MDCheckbox:
+                id: leitura_unica
+                group: "modo"
+                active: True
+
+            MDLabel:
+                text: "ÚNICA"
+
+        MDBoxLayout:
+            MDCheckbox:
+                id: leitura_recorrente
+                group: "modo"
+
+            MDLabel:
+                text: "RECORRENTE"
+
+        MDRaisedButton:
+            text: "LER"
+            size_hint_x: None
+            width: "120dp"
+            on_press: root.ler()
+        
+        MDRaisedButton:
+            text: "PARAR LEITURA"
+            size_hint_x: None
+            width: "120dp"
+            on_press: root.parar_loop()
+
+    MDBoxLayout:
+        size_hint_y: None
+        height: "60dp"
+        spacing: "10dp"
+
+        MDLabel:
+            text: "VALOR LIDO:"
+            size_hint_x: None
+            width: "130dp"
+
+        MDTextField:
+            id: leitura
+            readonly: True
+            mode: "rectangle"
+
+    MDBoxLayout:
+        size_hint_y: None
+        height: "50dp"
+
+        MDRaisedButton:
+            text: "SAIR"
+            size_hint_x: None
+            width: "120dp"
+            on_press: app.stop()
